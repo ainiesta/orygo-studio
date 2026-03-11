@@ -1,12 +1,39 @@
 "use client";
 import { useState } from "react";
 
-export default function Contact() {
-  const [sent, setSent] = useState(false);
+type Status = "idle" | "sending" | "success" | "error";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+export default function Contact() {
+  const [status, setStatus] = useState<Status>("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const data = {
+      nombre:   (form.elements.namedItem("nombre")   as HTMLInputElement).value,
+      email:    (form.elements.namedItem("email")    as HTMLInputElement).value,
+      proyecto: (form.elements.namedItem("proyecto") as HTMLInputElement).value,
+      mensaje:  (form.elements.namedItem("mensaje")  as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -29,12 +56,14 @@ export default function Contact() {
       >
         <div className="grid sm:grid-cols-2 gap-4">
           <input
+            name="nombre"
             type="text"
             placeholder="Tu nombre"
             required
             className="bg-[#242424] border border-[#333] text-white placeholder-[#666] rounded-lg px-4 py-3 text-base outline-none focus:border-blue transition-colors"
           />
           <input
+            name="email"
             type="email"
             placeholder="tu@email.com"
             required
@@ -42,22 +71,35 @@ export default function Contact() {
           />
         </div>
         <input
+          name="proyecto"
           type="text"
           placeholder="¿De qué va el proyecto?"
           className="bg-[#242424] border border-[#333] text-white placeholder-[#666] rounded-lg px-4 py-3 text-base outline-none focus:border-blue transition-colors"
         />
         <textarea
+          name="mensaje"
           placeholder="Cuéntanos un poco más. Sin presión."
           rows={4}
           className="bg-[#242424] border border-[#333] text-white placeholder-[#666] rounded-lg px-4 py-3 text-base outline-none focus:border-blue transition-colors resize-y"
         />
+
         <button
           type="submit"
-          disabled={sent}
-          className="bg-coral text-white font-bold text-base py-3 rounded-lg hover:bg-blue transition-all hover:-translate-y-0.5 disabled:opacity-80 disabled:cursor-default"
+          disabled={status === "sending" || status === "success"}
+          className="bg-coral text-white font-bold text-base py-3 rounded-lg hover:bg-blue transition-all hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-default disabled:hover:translate-y-0"
         >
-          {sent ? "¡Mensaje enviado! Te respondemos pronto." : "Enviar mensaje →"}
+          {status === "idle"    && "Enviar mensaje →"}
+          {status === "sending" && "Enviando..."}
+          {status === "success" && "¡Mensaje enviado! Te respondemos pronto."}
+          {status === "error"   && "Algo ha fallado. Inténtalo de nuevo."}
         </button>
+
+        {status === "error" && (
+          <p className="text-sm text-coral text-center">
+            Si el problema persiste, escríbenos directamente a{" "}
+            <a href="mailto:hola@orygo.studio" className="underline">hola@orygo.studio</a>
+          </p>
+        )}
       </form>
 
       <p className="reveal mt-8 text-sm text-[#666]">
