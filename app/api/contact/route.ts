@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     }
 
     await resend.emails.send({
-      from: "Orygo Studio <onboarding@resend.dev>",
+      from: "Orygo Studio <hola@orygo.studio>",
       to: "hola@orygo.studio",
       replyTo: email,
       subject: `Nuevo mensaje de ${nombre} — ${proyecto || "sin asunto"}`,
