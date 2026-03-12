@@ -6,12 +6,11 @@ import OrygoLogo from "@/components/OrygoLogo";
 const links = [
   { href: "#servicios", label: "Servicios" },
   { href: "#como",      label: "Proceso" },
-  { href: "#casos",     label: "Casos" },
   { href: "#nosotros",  label: "Nosotros" },
 ];
 
-const LIGHT_SECTIONS = new Set(["servicios", "casos", "contacto"]);
-const ALL_SECTIONS   = ["hero", "servicios", "como", "casos", "nosotros", "contacto"];
+const LIGHT_SECTIONS = new Set(["servicios", "nosotros", "contacto"]);
+const ALL_SECTIONS   = ["hero", "servicios", "como", "nosotros", "contacto"];
 
 export default function Nav() {
   const [isLight, setIsLight] = useState(false);
