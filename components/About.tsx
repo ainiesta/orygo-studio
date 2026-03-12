@@ -1,8 +1,8 @@
 const stats = [
   { num: "+40",  label: "Proyectos" },
-  { num: "6",    label: "Años" },
-  { num: "100%", label: "Repiten" },
-  { num: "0",    label: "Buzzwords" },
+  { num: "+20",  label: "Años de experiencia" },
+  { num: "100%", label: "Repiten (o no)" },
+  { num: "0,5",  label: "Buzzwords" },
 ];
 
 export default function About() {
