@@ -40,16 +40,13 @@ export default function About() {
 
         <div className="reveal flex flex-col gap-6">
           {/* Stats grid */}
-          <div
-            className="grid grid-cols-2 gap-px"
-            style={{ background: "rgba(131,56,235,0.15)" }}
-          >
+          <div className="grid grid-cols-2 divide-x divide-y divide-black/10 border border-black/10">
             {stats.map((s) => (
-              <div key={s.label} className="bg-morado p-10">
-                <div className="font-display font-light italic text-[3.2rem] leading-none text-lima mb-1">
+              <div key={s.label} className="p-10">
+                <div className="font-display font-light italic text-[3.2rem] leading-none text-magenta mb-1">
                   {s.num}
                 </div>
-                <div className="text-[0.72rem] font-normal tracking-[0.12em] uppercase text-off/50">
+                <div className="text-[0.72rem] font-normal tracking-[0.12em] uppercase text-black/40">
                   {s.label}
                 </div>
               </div>
