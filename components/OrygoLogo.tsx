@@ -1,0 +1,35 @@
+export default function OrygoLogo({
+  className = "",
+  width = 120,
+  accent = "#0166FF",
+}: {
+  className?: string;
+  width?: number;
+  accent?: string;
+}) {
+  const height = Math.round(width * (185 / 541));
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 541 185"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Orygo Studio"
+    >
+      <path
+        d="M101 144H61V124H101V144ZM151 104H191V124H151V144H131V64H151V104ZM211 144H191V124H211V144ZM261 144H241V84H261V144ZM351 144H311V124H351V144ZM441 144H401V124H441V144ZM61 124H41V64H61V124ZM121 124H101V64H121V124ZM311 124H291V64H311V124ZM371 124H351V104H331V84H371V124ZM401 124H381V64H401V124ZM461 124H441V64H461V124ZM211 104H191V64H211V104ZM241 84H221V44H241V84ZM281 84H261V44H281V84ZM101 64H61V44H101V64ZM191 64H151V44H191V64ZM351 64H311V44H351V64ZM441 44V64H401V44H441Z"
+        fill="currentColor"
+      />
+      <rect
+        x="501"
+        y="124"
+        width="20"
+        height="20"
+        transform="rotate(90 501 124)"
+        fill={accent}
+      />
+    </svg>
+  );
+}

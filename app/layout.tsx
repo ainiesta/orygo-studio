@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Source_Sans_3 } from "next/font/google";
+import { Source_Sans_3, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700", "900"],
+  weight: ["300", "400", "600"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -29,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={sourceSans.variable}>
+    <html lang="es" className={`${sourceSans.variable} ${cormorant.variable}`}>
       <body>{children}</body>
     </html>
   );
