@@ -1,7 +1,7 @@
 const services = [
   { num: "01", name: "Estrategia de producto",  desc: "Definimos qué construir y por qué, sin rodeos ni propuestas genéricas. Identificamos lo que importa de verdad a tus usuarios." },
-  { num: "02", name: "Diseño UX/UI & Research", desc: "Primero hablamos con tus usuarios para entender qué les frena. Luego diseñamos interfaces que la gente entiende a la primera." },
-  { num: "03", name: "Creación de marca",        desc: "Construimos marcas desde cero: nombre, identidad visual y voz. Sin kits genéricos, sin atajos — solo lo que hace que te recuerden." },
+  { num: "02", name: "Creación de marca",        desc: "Construimos marcas desde cero: nombre, identidad visual y voz. Sin kits genéricos, sin atajos — solo lo que hace que te recuerden." },
+  { num: "03", name: "Diseño UX/UI & Research", desc: "Primero hablamos con tus usuarios para entender qué les frena. Luego diseñamos interfaces que la gente entiende a la primera." },
   { num: "04", name: "Desarrollo web y app",     desc: "Te ayudamos a montar un producto viable y acompañamos a los equipos de desarrollo para que todo sea un proceso indoloro." },
   { num: "05", name: "Consultoría de IA",        desc: "IA donde de verdad tiene sentido. Sin hype, sin promesas vacías. Solo lo que te ahorra tiempo y te hace más capaz." },
   { num: "06", name: "Lanzamiento y Growth",     desc: "El producto está listo. Ahora toca que llegue a quien tiene que llegar. Estrategia de lanzamiento y primeros pasos de crecimiento." },
