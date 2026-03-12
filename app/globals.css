@@ -1,42 +1,58 @@
 @import "tailwindcss";
 
 @theme {
-  --color-blue:   #0166FF;
-  --color-coral:  #FF5C5D;
-  --color-yellow: #FFF100;
-  --color-black:  #1A1A1A;
-  --color-white:  #EAEAEA;
+  --color-lima:    #C0FF00;
+  --color-cian:    #00BBFA;
+  --color-magenta: #FF006E;
+  --color-morado:  #8338EB;
+  --color-black:   #1F1F1F;
+  --color-off:     #F5F4F0;
+  --color-mid:     #888888;
 
-  --font-sans: "Source Sans 3", sans-serif;
+  --font-sans:    'Source Sans 3', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
 }
 
 @layer base {
   html { scroll-behavior: smooth; }
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-white);
-    color: var(--color-black);
+    background-color: var(--color-black);
+    color: var(--color-off);
     overflow-x: hidden;
+    cursor: none;
   }
+  *, *::before, *::after { cursor: none !important; }
 }
 
-/* Reveal animation */
 @layer utilities {
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .float-card {
-    animation: floatCard 4s ease-in-out infinite;
+  .reveal.up { opacity: 1; transform: translateY(0); }
+  .cursor-ring-hovered {
+    width: 72px !important;
+    height: 72px !important;
+    border-color: #FF006E !important;
   }
 }
 
-@keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-14px); }
+@keyframes charReveal {
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes meshShift {
+  0%   { opacity: 1; transform: scale(1) rotate(0deg); }
+  100% { opacity: 0.7; transform: scale(1.05) rotate(2deg); }
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes lineSlide {
+  0%   { left: -100%; }
+  50%  { left: 0; }
+  100% { left: 100%; }
 }

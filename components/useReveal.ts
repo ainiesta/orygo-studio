@@ -8,12 +8,12 @@ export function useReveal() {
       (entries) => {
         entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add("visible"), i * 80);
+            setTimeout(() => entry.target.classList.add("up"), i * 90);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
