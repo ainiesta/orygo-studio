@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, Cormorant_Garamond } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -38,7 +40,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${sourceSans.variable} ${cormorant.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
